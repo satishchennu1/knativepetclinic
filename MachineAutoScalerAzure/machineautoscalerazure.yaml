@@ -1,0 +1,40 @@
+kind: List
+metadata: {}
+apiVersion: v1
+items:
+- apiVersion: "autoscaling.openshift.io/v1beta1"
+  kind: "MachineAutoscaler"
+  metadata:
+    generateName: autoscale-eastus1-
+    namespace: "openshift-machine-api"
+  spec:
+    minReplicas: 1
+    maxReplicas: 7
+    scaleTargetRef:
+      apiVersion: machine.openshift.io/v1beta1
+      kind: MachineSet
+      name: test-qcrvx-worker-eastus1
+- apiVersion: "autoscaling.openshift.io/v1beta1"
+  kind: "MachineAutoscaler"
+  metadata:
+    generateName: autoscale-eastus2-
+    namespace: "openshift-machine-api"
+  spec:
+    minReplicas: 1
+    maxReplicas: 7
+    scaleTargetRef:
+      apiVersion: machine.openshift.io/v1beta1
+      kind: MachineSet
+      name: test-qcrvx-worker-eastus2
+- apiVersion: "autoscaling.openshift.io/v1beta1"
+  kind: "MachineAutoscaler"
+  metadata:
+    generateName: autoscale-eastus3-
+    namespace: "openshift-machine-api"
+  spec:
+    minReplicas: 1
+    maxReplicas: 6
+    scaleTargetRef:
+      apiVersion: machine.openshift.io/v1beta1
+      kind: MachineSet
+      name: test-qcrvx-worker-eastus3
