@@ -1,0 +1,16 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: petclinicapp 
+  namespace: knativepetclinic 
+spec:
+  runLatest:
+    configuration:
+      revisionTemplate:
+        spec:
+          container:
+            image: gcr.io/knative-samples/helloworld-nodejs
+            image: docker.io/schennu4/petclinic:v1
+            env:
+              - name: TARGET
+                value: "Knative PetClinicApp"
