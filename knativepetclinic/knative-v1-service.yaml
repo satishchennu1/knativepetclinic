@@ -1,0 +1,11 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: petclinic 
+spec:
+  template:
+    metadata:
+      name: petclinic-v1
+    spec:
+      containers:
+        - image: quay.io/schennu/ieopetclinic:v2 
