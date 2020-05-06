@@ -1,0 +1,24 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: petclinic 
+spec:
+  template:
+    metadata:
+       name: petclinic-v2 
+    spec:
+      containers:
+        - image: quay.io/schennu/ieopetclinic:v2 
+          env:
+            - name: MESSAGE_PREFIX
+              value: IEO Game Changer 
+  traffic:
+    - tag: v1
+      revisionName: petclinic-v1
+      percent: 80
+    - tag: v2
+      revisionName: petclinic-v2
+      percent: 20
+    - tag: latest
+      latestRevision: true
+      percent: 0

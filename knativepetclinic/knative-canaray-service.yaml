@@ -1,0 +1,14 @@
+piVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: ieopetclinic 
+spec:
+  template:
+  traffic:
+    - tag: v1
+      revisionName: petclinic-v1 
+      percent: 50 
+    - tag: v2
+      revisionName: petclinic-v2 
+      percent: 50
+
